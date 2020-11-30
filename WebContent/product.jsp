@@ -1,10 +1,11 @@
 <%@ page contentType = "text/html; charset=utf-8" %>
 <%@ page import = "dto.Product" %>
-<jsp:useBean id = "productDAO" class = "dao.ProductRepository" scope = "session" />
+<%@ page import = "dao.ProductRepository" %>
 <html>
 <head>
 <!-- https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
-<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <title> 상품 상세 정보 </title>
 </head>
@@ -17,7 +18,8 @@
 	</div>
 	<%
 		String id = request.getParameter("id");
-		Product product = productDAO.getProductById(id);
+		ProductRepository dao = ProductRepository.getInstance();
+		Product product = dao.getProductById(id);
 	%>
 	<div class = "container">
 		<div class = "row">
@@ -29,7 +31,8 @@
 				<p> <b> 분류 </b> : <%= product.getCategory() %>
 				<p> <b> 재고 수 </b> : <%= product.getUnitsInStock() %>
 				<h4> <%= product.getUnitPrice() %>원 </h4>
-				<p> <a href = "#" class = "btn btn-info"> 상품 주문 </a> <a href = "./products.jsp" class = "btn btn-secondary"> 상품 목록 </a>
+				<p> <a href = "#" class = "btn btn-info"> 상품 주문 </a> 
+					<a href = "./products.jsp" class = "btn btn-secondary"> 상품 목록 </a>
 			</div>
 		</div>
 	</div>
