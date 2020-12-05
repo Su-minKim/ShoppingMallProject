@@ -36,10 +36,8 @@
 				}
 				String CT = hour + ":" + minute + ":" + second + " " +am_pm;
 				out.println("현재 접속 시각 : " + CT + "\n");
-<<<<<<< HEAD
+
 				response.setIntHeader("Refresh", 5); // 5초마다 자동 갱신
-=======
->>>>>>> refs/remotes/origin/master
 			%>
 		</div>
 		<hr>
